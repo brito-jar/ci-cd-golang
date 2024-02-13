@@ -7,10 +7,10 @@ on:
 jobs:
   check-application:
     runs-on: ubuntu-latest
+    strategy:
+      matrix: # Serve para rodar em várias versões do go ou OS
+        go: ['1.15', '1.22']
     steps:
-      strategy:
-        matrix: # Serve para rodar em várias versões do go ou OS
-          go: ['1.15', '1.22']
       - uses: actions/checkout@v2 # baixa os arquivos no ubuntu
       - uses: actions/setup-go@v2 # instala o go para executar os comandos
         with:
