@@ -3,13 +3,17 @@ on:
   pull_request:
     branches:
       - develop
+
 jobs:
   check-application:
     runs-on: ubuntu-latest
+    strategy:
+      matrix: # Serve para rodar em várias versões do go ou OS
+        go: ['1.14', '1.15']
     steps:
       - uses: actions/checkout@v2 # baixa os arquivos no ubuntu
       - uses: actions/setup-go@v2 # instala o go para executar os comandos
         with:
-          go-version: '1.22' # versão do go
+          go-version: ${{ matrix.go }} # versão do go
       - run: go test
       - run: go run calculadora.go
