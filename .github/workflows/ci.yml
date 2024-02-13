@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix: # Serve para rodar em várias versões do go ou OS
-        go: [1.19, 1.22.0]
+        go: ['1.19', '1.22.0']
     steps:
       - uses: actions/checkout@v2 # baixa os arquivos no ubuntu
       - uses: actions/setup-go@v2 # instala o go para executar os comandos
